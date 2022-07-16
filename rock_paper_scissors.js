@@ -1,3 +1,16 @@
+//Ask user for their choice
+let choice = prompt("Rock, Paper, or Scissors?");
+
+function getPlayerChoice() {
+    let updatedChoice = choice.toLowerCase();
+    if (updatedChoice !== "rock" && "paper" && "scissors") {
+        console.log("Invalid choice");
+    }
+    else {
+        return updatedChoice;
+    }
+}
+
 //Get a random choice from computer
 function getComputerChoice() {
     num = Math.floor(Math.random() * 3);
@@ -37,7 +50,9 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-const playerSelection = "rock";
+
+
+const playerSelection = getPlayerChoice();
 const computerSelection = getComputerChoice();
 console.log(playRound(playerSelection, computerSelection));
 
