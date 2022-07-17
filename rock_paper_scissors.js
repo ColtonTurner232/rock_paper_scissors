@@ -1,7 +1,5 @@
-let playerPoint = 0
-let computerPoint = 0
-const playerSelection = getPlayerChoice();
-const computerSelection = getComputerChoice();
+let playerPoint = 0;
+let computerPoint = 0;
 
 game();
 
@@ -79,12 +77,15 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+//plays the game 5 times and then declares an ultimate winner
 function game() {
-    for (i = 0; i < 5; i++) {
+    const playerSelection = getPlayerChoice();
+    const computerSelection = getComputerChoice();
+
+    for(i = 0; i < 5; i++) {
     playRound(playerSelection, computerSelection);
-    console.log(i);
     }
-    
+
     if (playerPoint < computerPoint) {
         console.log ("Computer is the Ultimate Winner!");
     }
