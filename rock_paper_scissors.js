@@ -10,11 +10,12 @@ function getPlayerChoice() {
         choice = prompt("Rock, Paper, or Scissors?");
     }
     choice = choice.toLowerCase();
-    if (choice === "rock" || "paper" || "scissors") {
+    if (choice == "rock" || "paper" || "scissors") {
         return choice;
     }
     else {
         console.log("Invalid choice");
+        choice = prompt("Rock, Paper, or Scissors?");
     }
 }
 
@@ -79,10 +80,9 @@ function playRound(playerSelection, computerSelection) {
 
 //plays the game 5 times and then declares an ultimate winner
 function game() {
-    const playerSelection = getPlayerChoice();
-    const computerSelection = getComputerChoice();
-
     for(i = 0; i < 5; i++) {
+    let playerSelection = getPlayerChoice();
+    let computerSelection = getComputerChoice()
     playRound(playerSelection, computerSelection);
     }
 
