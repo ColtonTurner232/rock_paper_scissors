@@ -1,13 +1,22 @@
-//Ask user for their choice
-let choice = prompt("Rock, Paper, or Scissors?");
+let playerPoint = 0
+let computerPoint = 0
+const playerSelection = getPlayerChoice();
+const computerSelection = getComputerChoice();
 
+game();
+
+//Ask user for their choice and returns only rock, paper, or scissors
 function getPlayerChoice() {
-    let updatedChoice = choice.toLowerCase();
-    if (updatedChoice !== "rock" && "paper" && "scissors") {
-        console.log("Invalid choice");
+    let choice = prompt("Rock, Paper, or Scissors?");
+    while ( choice == null) {
+        choice = prompt("Rock, Paper, or Scissors?");
+    }
+    choice = choice.toLowerCase();
+    if (choice === "rock" || "paper" || "scissors") {
+        return choice;
     }
     else {
-        return updatedChoice;
+        console.log("Invalid choice");
     }
 }
 
@@ -28,31 +37,58 @@ function getComputerChoice() {
 //function that plays a single round
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == computerSelection) {
-        return "Tie!";
+        console.log("You Tie!");
+        console.log("player: " + playerPoint);
+        console.log("computer: " + computerPoint);
     }
     else if (playerSelection == "rock" && computerSelection == "paper") {
-        return "Paper beats rock! Computer wins!"
+        console.log("Paper beats Rock! Computer wins!");
+        console.log("player: " + playerPoint);
+        console.log("computer: " + computerPoint);
+        computerPoint++;
     }
     else if (playerSelection == "paper" && computerSelection == "rock") {
-        return "Paper beats rock! You win!"
+        console.log("Paper beats Rock! You win!");
+        console.log("player: " + playerPoint);
+        console.log("computer: " + computerPoint);
+        playerPoint++;
     }
     else if (playerSelection == "scissors" && computerSelection == "paper") {
-        return "Scissors beats paper! you win!"
+        console.log("Scissors beats Paper! you win!");
+        console.log("player: " + playerPoint);
+        console.log("computer: " + computerPoint);
+        playerPoint++;
     }
     else if (playerSelection == "paper" && computerSelection == "scissors") {
-        return "Scissors beats paper! computer wins!"
+        console.log("Scissors beats Paper! Computer wins!");
+        console.log("player: " + playerPoint);
+        console.log("computer: " + computerPoint);
+        computerPoint++;
     }
     else if (playerSelection == "scissors" && computerSelection == "rock") {
-        return "rock beats scissors! computer wins!"
+        console.log("Rock beats Scissors! Computer wins!");
+        console.log("player: " + playerPoint);
+        console.log("computer: " + computerPoint);
+        computerPoint++;
     }
     else if (playerSelection == "rock" && computerSelection == "scissors") {
-        return "rock beats scissors! you win!"
+        console.log("Rock beats Scissors! you win!");
+        console.log("player: " + playerPoint);
+        console.log("computer: " + computerPoint);
+        playerPoint++;
     }
 }
 
-
-
-const playerSelection = getPlayerChoice();
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
-
+function game() {
+    for (i = 0; i < 5; i++) {
+    playRound(playerSelection, computerSelection);
+    console.log(i);
+    }
+    
+    if (playerPoint < computerPoint) {
+        console.log ("Computer is the Ultimate Winner!");
+    }
+    if (playerPoint > computerPoint) {
+        console.log ("You are the Ultimate Winner!");
+    }
+}
