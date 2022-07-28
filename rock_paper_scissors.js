@@ -1,22 +1,27 @@
 let playerPoint = 0;
 let computerPoint = 0;
 
-game();
+
 
 //Ask user for their choice and returns only rock, paper, or scissors
 function getPlayerChoice() {
+
     let choice = prompt("Rock, Paper, or Scissors?");
+
     while ( choice == null) {
         choice = prompt("Rock, Paper, or Scissors?");
-    }
+    }    
+
     choice = choice.toLowerCase();
-    if (choice == "rock" || "paper" || "scissors") {
+
+    if (choice === "rock" || choice === "paper" || choice === "scissors") {
         return choice;
     }
-    else {
-        console.log("Invalid choice");
-        choice = prompt("Rock, Paper, or Scissors?");
-    }
+
+    else if (choice !== "rock" || choice !== "paper" || choice !== "scissors") {
+        choice = prompt("invalid choice. Rock, Paper, or Scissors?");
+        return;
+    } 
 }
 
 //Get a random choice from computer
@@ -78,18 +83,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-//plays the game 5 times and then declares an ultimate winner
-function game() {
-    for(i = 0; i < 5; i++) {
-    let playerSelection = getPlayerChoice();
-    let computerSelection = getComputerChoice()
-    playRound(playerSelection, computerSelection);
-    }
+let playerSelection = getPlayerChoice();
+let computerSelection = getComputerChoice();
 
-    if (playerPoint < computerPoint) {
-        console.log ("Computer is the Ultimate Winner!");
-    }
-    if (playerPoint > computerPoint) {
-        console.log ("You are the Ultimate Winner!");
-    }
-}
+console.log(playRound(playerSelection, computerSelection));
