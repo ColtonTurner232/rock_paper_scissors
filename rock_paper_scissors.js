@@ -1,6 +1,5 @@
 let playerPoint = 0;
 let computerPoint = 0;
-let computerSelection = getComputerChoice();
 
 const container = document.querySelector('.container');
 const counter = document.querySelector('.counter');
@@ -8,9 +7,18 @@ const btn1 = document.querySelector('.button1');
 const btn2 = document.querySelector('.button2');
 const btn3 = document.querySelector('.button3');
 
-btn1.addEventListener("click", playRound("rock", getComputerChoice));
-btn2.addEventListener("click", playRound("paper", getComputerChoice)); 
-btn3.addEventListener("click", playRound("scissors", getComputerChoice));  
+btn1.addEventListener("click", e => {
+    let computerSelection = getComputerChoice();
+    console.log(playRound("rock", computerSelection))
+});
+btn2.addEventListener("click", e => {
+    let computerSelection = getComputerChoice();
+    console.log(playRound("paper", computerSelection));
+}); 
+btn3.addEventListener("click", e => {
+    let computerSelection = getComputerChoice();
+    console.log(playRound("scissors", computerSelection));
+});  
 
 //Get a random choice from computer
 function getComputerChoice() {
@@ -70,3 +78,4 @@ function playRound(x, computerSelection) {
         playerPoint++;
     }
 }
+
