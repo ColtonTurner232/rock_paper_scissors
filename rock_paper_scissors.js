@@ -16,6 +16,7 @@ btn1.addEventListener("click", e => {
     playRound("rock", computerSelection);
     winner(playerPoint, computerPoint);
     gameEnd(playerPoint, computerPoint);
+    
 });
 
 //Player chooses paper
@@ -24,6 +25,7 @@ btn2.addEventListener("click", e => {
     playRound("paper", computerSelection);
     winner(playerPoint, computerPoint);
     gameEnd(playerPoint, computerPoint);
+    
 }); 
 
 //player chooses scissors
@@ -32,6 +34,7 @@ btn3.addEventListener("click", e => {
     playRound("scissors", computerSelection);
     winner(playerPoint, computerPoint);
     gameEnd(playerPoint, computerPoint);
+    
 });  
 
 
@@ -119,5 +122,9 @@ function gameEnd(playerPoint, computerPoint) {
  
 
         container.append(restartBtn);
+
+        restartBtn.addEventListener("click", e => {
+            window.location.reload();
+        });
     }
 }
