@@ -7,18 +7,28 @@ const btn1 = document.querySelector('.button1');
 const btn2 = document.querySelector('.button2');
 const btn3 = document.querySelector('.button3');
 
+//Player chooses rock
 btn1.addEventListener("click", e => {
     let computerSelection = getComputerChoice();
-    console.log(playRound("rock", computerSelection))
+    console.log(playRound("rock", computerSelection));
+    winner(playerPoint, computerPoint);
 });
+
+//Player chooses paper
 btn2.addEventListener("click", e => {
     let computerSelection = getComputerChoice();
     console.log(playRound("paper", computerSelection));
+    winner(playerPoint, computerPoint);
 }); 
+
+//player chooses scissors
 btn3.addEventListener("click", e => {
     let computerSelection = getComputerChoice();
     console.log(playRound("scissors", computerSelection));
+    winner(playerPoint, computerPoint);
 });  
+
+
 
 //Get a random choice from computer
 function getComputerChoice() {
@@ -79,3 +89,12 @@ function playRound(x, computerSelection) {
     }
 }
 
+//Function that declares overall winner
+function winner(playerPoint, computerPoint) {
+    if (playerPoint == 5) {
+        console.log("Good Guy Wins!!!");
+    }
+    else if (computerPoint == 5) {
+        console.log("Bad Guy Wins!!!");
+    }
+} 
