@@ -15,6 +15,7 @@ btn1.addEventListener("click", e => {
     let computerSelection = getComputerChoice();
     playRound("rock", computerSelection);
     winner(playerPoint, computerPoint);
+    gameEnd(playerPoint, computerPoint);
 });
 
 //Player chooses paper
@@ -22,6 +23,7 @@ btn2.addEventListener("click", e => {
     let computerSelection = getComputerChoice();
     playRound("paper", computerSelection);
     winner(playerPoint, computerPoint);
+    gameEnd(playerPoint, computerPoint);
 }); 
 
 //player chooses scissors
@@ -29,6 +31,7 @@ btn3.addEventListener("click", e => {
     let computerSelection = getComputerChoice();
     playRound("scissors", computerSelection);
     winner(playerPoint, computerPoint);
+    gameEnd(playerPoint, computerPoint);
 });  
 
 
@@ -102,3 +105,19 @@ function winner(playerPoint, computerPoint) {
     }
 } 
 
+//Ends game and removes buttons and adds play again button that restarts app
+function gameEnd(playerPoint, computerPoint) {
+    if (playerPoint === 5 || computerPoint === 5) {
+        
+        btn1.remove();
+        btn2.remove();
+        btn3.remove();
+
+        const restartBtn = document.createElement('button');
+        restartBtn.classList.add('restart');
+        restartBtn.textContent = "Play Again!"
+ 
+
+        container.append(restartBtn);
+    }
+}
