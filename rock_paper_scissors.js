@@ -3,28 +3,31 @@ let computerPoint = 0;
 
 const container = document.querySelector('.container');
 const counter = document.querySelector('.counter');
+const h1 = document.querySelector('.h1');
 const btn1 = document.querySelector('.button1');
 const btn2 = document.querySelector('.button2');
 const btn3 = document.querySelector('.button3');
+const pScr = document.querySelector('.player-score');
+const cScr = document.querySelector('.computer-score');
 
 //Player chooses rock
 btn1.addEventListener("click", e => {
     let computerSelection = getComputerChoice();
-    console.log(playRound("rock", computerSelection));
+    playRound("rock", computerSelection);
     winner(playerPoint, computerPoint);
 });
 
 //Player chooses paper
 btn2.addEventListener("click", e => {
     let computerSelection = getComputerChoice();
-    console.log(playRound("paper", computerSelection));
+    playRound("paper", computerSelection);
     winner(playerPoint, computerPoint);
 }); 
 
 //player chooses scissors
 btn3.addEventListener("click", e => {
     let computerSelection = getComputerChoice();
-    console.log(playRound("scissors", computerSelection));
+    playRound("scissors", computerSelection);
     winner(playerPoint, computerPoint);
 });  
 
@@ -47,54 +50,55 @@ function getComputerChoice() {
 //function that plays a single round and tallies score
 function playRound(x, computerSelection) {
     if (x == computerSelection) {
-        console.log("You Tie!");
-        console.log("player: " + playerPoint);
-        console.log("computer: " + computerPoint);
+        h1.textContent = "You Tie!";
     }
     else if (x == "rock" && computerSelection == "paper") {
-        console.log("Paper beats Rock! Computer wins!");
-        console.log("player: " + playerPoint);
-        console.log("computer: " + computerPoint);
+        h1.textContent = "Paper beats Rock! Computer wins!";
         computerPoint++;
+        pScr.textContent = "Player Score: " + playerPoint;
+        cScr.textContent = "Computer Score: " + computerPoint;
     }
     else if (x == "paper" && computerSelection == "rock") {
-        console.log("Paper beats Rock! You win!");
-        console.log("player: " + playerPoint);
-        console.log("computer: " + computerPoint);
+        h1.textContent = "Paper beats Rock! You win!";
         playerPoint++;
+        pScr.textContent = "Player Score: " + playerPoint;
+        cScr.textContent = "Computer Score: " + computerPoint;
     }
     else if (x == "scissors" && computerSelection == "paper") {
-        console.log("Scissors beats Paper! you win!");
-        console.log("player: " + playerPoint);
-        console.log("computer: " + computerPoint);
+        h1.textContent = "Scissors beats Paper! you win!";
         playerPoint++;
+        pScr.textContent = "Player Score: " + playerPoint;
+        cScr.textContent = "Computer Score: " + computerPoint;
     }
     else if (x == "paper" && computerSelection == "scissors") {
-        console.log("Scissors beats Paper! Computer wins!");
-        console.log("player: " + playerPoint);
-        console.log("computer: " + computerPoint);
+        h1.textContent = "Scissors beats Paper! Computer wins!";
         computerPoint++;
+        pScr.textContent = "Player Score: " + playerPoint;
+        cScr.textContent = "Computer Score: " + computerPoint;
     }
     else if (x == "scissors" && computerSelection == "rock") {
-        console.log("Rock beats Scissors! Computer wins!");
-        console.log("player: " + playerPoint);
-        console.log("computer: " + computerPoint);
+        h1.textContent = "Rock beats Scissors! Computer wins!";
         computerPoint++;
+        pScr.textContent = "Player Score: " + playerPoint;
+        cScr.textContent = "Computer Score: " + computerPoint;
     }
     else if (x == "rock" && computerSelection == "scissors") {
-        console.log("Rock beats Scissors! you win!");
-        console.log("player: " + playerPoint);
-        console.log("computer: " + computerPoint);
+        h1.textContent = "Rock beats Scissors! you win!";
         playerPoint++;
+        pScr.textContent = "Player Score: " + playerPoint;
+        cScr.textContent = "Computer Score: " + computerPoint;
     }
 }
 
 //Function that declares overall winner
 function winner(playerPoint, computerPoint) {
     if (playerPoint == 5) {
-        console.log("Good Guy Wins!!!");
+        h1.textContent = "Player Wins!!!";
+        h1.style.color = "blue";
     }
     else if (computerPoint == 5) {
-        console.log("Bad Guy Wins!!!");
+        h1.textContent = "Computer Wins!!!";
+        h1.style.color = "red";
     }
 } 
+
